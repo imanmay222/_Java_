@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"slices"
+	"errors"
 )
 
 func Program1(){
@@ -266,7 +267,6 @@ func EmployeeManagement(){
 		var emp Emp
 		fmt.Println("Enter the details : ")
 		fmt.Scanf("%s %s %v %s",&emp.Id,&emp.Name,&emp.Salary,&emp.Dept)
-
 		slice=append(slice, emp)
 	}
 
@@ -311,11 +311,32 @@ func Student(){
 		fmt.Scan(&stu.name,&stu.roll,&stu.marks)
 		slice=append(slice, stu)
 	}
-
 	fmt.Println(Operation(slice))
 }
 
-func main(){
-	Student()
+//Create a function that accepts two integers and an operator.
+// Return the result and an error if the operation is invalid or division by zero occurs.
+func Calculator(a int,b int,op string) (float64,error){
+	switch op{
+	case "+":
+		return float64(a+b),nil
+	
+	case "-":
+		return float64(a-b),nil
+	
+	case "*":
+		return float64(a*b),nil
 
+	case "/":
+		if b==0{
+			return 0,errors.New("Division by Zero error")
+		}
+		return float64(a/b),nil
+	default:
+		return 0, errors.New("Invalid operation")
+	}
+}
+
+func main(){
+	fmt.Print(Calculator(1,0,"/"))
 }
