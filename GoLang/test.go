@@ -337,6 +337,21 @@ func Calculator(a int,b int,op string) (float64,error){
 	}
 }
 
+//Create a function that validates a user. Return custom errors if the name is empty or age is below 18.
+func CheckAge(name string,age int) (bool,error){
+	if name==""{
+		return false,errors.New("Name can't be empty")
+	}else if age<18{
+		return false,errors.New("Age is below 18")
+	}else {
+		fmt.Printf("Name : %s , Age is : %v",name,age)
+		return true,nil
+	}
+}
+
+
+//Go Concurrency ---> Goroutines
+
 func main(){
-	fmt.Print(Calculator(1,0,"/"))
+	fmt.Println(CheckAge("",19))
 }
