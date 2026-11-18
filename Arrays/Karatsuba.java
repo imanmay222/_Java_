@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Karatsuba(){
+public class Karatsuba{
     public static long recur(long x,long y){
         if(x<10 || y<10){
             return x*y;
@@ -30,6 +30,6 @@ public class Karatsuba(){
         System.out.println("Enter the number 2 : ");
         y=sc.nextLong();
 
-        System.out.println("Multiplication Result is : ",recur(x,y));
+        System.out.println("Multiplication Result is : "+recur(x,y));
     }
 }
